@@ -1,0 +1,141 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <h2 class="nav-title">💸 Student Expense Tracker</h2>
+    </div>
+    <div class="nav-right">
+      <div class="user-profile">
+        <div class="avatar">👤</div>
+        <div class="username">User</div>
+      </div>
+      <button id="logoutBtn" class="btn-logout">Logout</button>
+    </div>
+  </nav>
+
+  <main class="container" id="app">
+
+    <section class="card" aria-labelledby="heading-add">
+      <h1 id="heading-add">Add Expense</h1>
+
+      <form id="expense-form">
+        <div class="field">
+          <label for="date">Date</label>
+          <input id="date" type="date" required />
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <input id="description" type="text" placeholder="e.g. Lunch, Bus fare" required />
+        </div>
+
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="Food & Drinks">Food & Drinks</option>
+            <option value="Transport">Transport</option>
+            <option value="Stationery">Stationery</option>
+            <option value="Bills">Bills</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="amount">Amount (PHP)</label>
+          <input id="amount" type="number" min="0" step="0.01" required />
+        </div>
+
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-primary" type="submit">Add Expense</button>
+          <button class="btn btn-muted" type="button" id="clear-form">Clear</button>
+        </div>
+      </form>
+
+      <hr class="divider" />
+
+      <div class="summary">
+        <div class="stat"><span class="small">Total Spent</span><b id="total">₱0.00</b></div>
+        <div class="stat"><span class="small">This Month</span><b id="month-total">₱0.00</b></div>
+        <div class="stat"><span class="small">Entries</span><b id="count">0</b></div>
+
+        <div class="stat">
+          <span class="small">Budget Left</span>
+          <b id="budget-left">₱5,000.00</b>
+          <button id="change-budget" class="btn btn-small">Change</button>
+        </div>
+      </div>
+
+      <div class="small">Quick actions</div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn btn-muted" id="invite-guardian">📧 Invite Guardian</button>
+        <button class="btn btn-muted" id="export-csv">Export CSV</button>
+        <button class="btn btn-muted" id="reset-all">Reset All</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h1>Expenses</h1>
+
+      <div class="controls">
+        <label class="tiny">Month</label>
+        <input id="filter-month" type="month" />
+
+        <label class="tiny">Category</label>
+        <select id="filter-cat">
+          <option value="">All</option>
+          <option>Food & Drinks</option>
+          <option>Transport</option>
+          <option>Stationery</option>
+          <option>Bills</option>
+          <option>Entertainment</option>
+          <option>Other</option>
+        </select>
+
+        <label class="tiny">Search</label>
+        <input id="search" type="text" placeholder="description..." style="width:200px" />
+
+        <div class="spacer"></div>
+        <label class="small">Sort</label>
+        <select id="sort-by">
+          <option value="date_desc">Date ↓</option>
+          <option value="date_asc">Date ↑</option>
+          <option value="amount_desc">Amount ↓</option>
+          <option value="amount_asc">Amount ↑</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="expense-table">
+            <tr><td colspan="5" class="no-data">No expenses yet</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>

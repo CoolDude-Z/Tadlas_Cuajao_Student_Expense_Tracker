@@ -1,0 +1,77 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker | Login & Sign Up</title>
+    <link rel="stylesheet" href="loginStyle.css">
+</head>
+<body>
+
+
+<div class="container">
+  
+  <div id="loginFormContainer">
+    <div class="header">
+      <h2>Welcome Back</h2>
+      <p>Login to your Expense Tracker</p>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+        <span class="toggle-password" data-target="password">Show</span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="footer-text">
+      Don't have an account?
+      <span class="toggle-link" id="showSignUp">Sign up</span>
+    </div>
+  </div>
+
+  
+  <div id="signUpFormContainer" class="hidden">
+    <div class="header">
+      <h2>Create Account</h2>
+      <p>Join the Expense Tracker family</p>
+    </div>
+
+    <form id="signUpForm">
+      <div class="form-group">
+        <label for="newUsername">Username</label>
+        <input type="text" id="newUsername" placeholder="Choose a username" required>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Password</label>
+        <input type="password" id="newPassword" placeholder="Create a password" required>
+        <span class="toggle-password" data-target="newPassword">Show</span>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+        <span class="toggle-password" data-target="confirmPassword">Show</span>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <div class="footer-text">
+      Already have an account?
+      <span class="toggle-link" id="showLogin">Login</span>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="login.js"></script>
+
+
+
+</body>
+</html> 
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenseTracker - Profile</title>
+    <link rel="stylesheet" href="user_profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo-section">
+      <div class="logo-icon">📊</div>
+      <div class="logo-text">ExpenseTracker</div>
+    </a>
+
+    <div class="user-section">
+      <div class="user-avatar">
+        <img 
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect fill='%23d1d5db' width='40' height='40'/%3E%3C/svg%3E" 
+          alt="User avatar">
+      </div>
+      <div class="user-name" id="headerUserName"></div>
+    </div>
+  </div>
+</header>
+
+<div class="main-container">
+  <aside>
+    <div class="profile-avatar">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect fill='%239ca3af' width='128' height='128'/%3E%3C/svg%3E" alt="Profile">
+      <button class="edit-avatar-btn">✎</button>
+    </div>
+
+    <div class="profile-info">
+      <div class="profile-name" id="sidebarUserName"></div>
+      <div class="profile-role">Student</div>
+      <div class="profile-member">Member since Oct 2024</div>
+    </div>
+
+  </aside>
+
+  <main>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="personal">👤 Personal Information</button>
+      <button class="tab-btn" data-tab="security">🔒 Security Settings</button>
+    </div>
+
+    <div id="personal" class="tab-content active">
+      <div class="content-header">
+        <h2 class="content-title">Personal Information</h2>
+        <button class="edit-btn">✎ Edit Profile</button>
+      </div>
+
+      <div class="form-section">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-input" id="firstNameInput" placeholder="First Name" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" id="lastNameInput" placeholder="Last Name" readonly>
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="emailInput" placeholder="Email Address" readonly>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-input" id="phoneInput" placeholder="Phone Number" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date of Birth</label>
+            <input type="text" class="form-input" id="dobInput" placeholder="Date of Birth" readonly>
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label class="form-label">Institution</label>
+            <input type="text" class="form-input" id="institutionInput" placeholder="Institution" readonly>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Student ID</label>
+            <input type="text" class="form-input" id="studentIdInput" placeholder="Student ID" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Year Level</label>
+            <select class="form-select" id="yearLevelSelect" disabled>
+              <option value="">Select Year Level</option>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-input" id="addressInput" placeholder="Address" readonly>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="security" class="tab-content">
+      <div class="content-header">
+        <h2 class="content-title">Security Settings</h2>
+        <button class="change-password-btn">🔒 Change Password</button>
+      </div>
+
+      <div class="form-section">
+        <div class="form-row full">
+          <div class="form-group">
+            <label class="form-label">Current Password</label>
+            <input type="password" id="currentPassword" class="form-input" placeholder="Enter current password">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">New Password</label>
+            <input type="password" id="newPassword" class="form-input" placeholder="Enter new password">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm New Password</label>
+            <input type="password" id="confirmNewPassword" class="form-input" placeholder="Re-enter new password">
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <button id="updatePasswordBtn" class="btn-primary">
+            🔒 Update Password
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="user_profile.js"></script>
+</body>
+</html>
